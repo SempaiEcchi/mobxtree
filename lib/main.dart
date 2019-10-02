@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart'
     '';
 import 'text.dart';
 
-
 void main() => runApp(App());
 
 class App extends StatelessWidget {
@@ -31,9 +30,7 @@ class TreeText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery
-        .of(context)
-        .size;
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text('Test'),
@@ -49,12 +46,13 @@ class TreeText extends StatelessWidget {
               children: <Widget>[
                 Container(
                   width: size.width * 0.9,
-                  child:
-                  TextField(decoration: decoration,
+                  child: TextField(
+                    decoration: decoration,
                     controller: controller,
                     onChanged: (text) {
                       doOnChanged();
-                    },),
+                    },
+                  ),
                 )
               ],
             ),
@@ -64,33 +62,30 @@ class TreeText extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-
                 Observer(builder: (_) {
                   return Container(
                     child: Text(
-                      tree.text, style: TextStyle(color: Colors.white),),
+                      tree.text,
+                      style: TextStyle(color: Colors.white),
+                    ),
                     color: tree.color,
                     height: size.width * 0.2,
                     width: size.width * 0.2,
                   );
                 })
-
-
               ],
             ),
-            Observer(builder: (_) {
-             return  Visibility(
-               visible: tree.visible,
-               child: Container(
-                 child: Image.network(
-                     "https://media.istockphoto.com/vectors/tree-background-vector-id518399734?k=6&m=518399734&s=612x612&w=0&h=qxXFy440iXG-CXB9jlC-TyWPKU0NRWLa3cGYu_-ukQI="),
-               ),
-             );
-
-
-            },)
-
-
+            Observer(
+              builder: (_) {
+                return Visibility(
+                  visible: tree.visible,
+                  child: Container(
+                    child: Image.network(
+                        "https://media.istockphoto.com/vectors/tree-background-vector-id518399734?k=6&m=518399734&s=612x612&w=0&h=qxXFy440iXG-CXB9jlC-TyWPKU0NRWLa3cGYu_-ukQI="),
+                  ),
+                );
+              },
+            )
           ],
         ),
       ),
@@ -99,9 +94,8 @@ class TreeText extends StatelessWidget {
 
   void doOnChanged() {
     tree.lenght = controller.text.length;
-    tree.controllerText=controller.text;
+    tree.controllerText = controller.text;
     tree.changeColor();
     tree.showImg();
-
   }
 }

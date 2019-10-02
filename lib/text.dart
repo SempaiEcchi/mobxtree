@@ -12,9 +12,8 @@ class TextTree = _Tree with _$TextTree;
 
 // The store-class
 abstract class _Tree with Store {
-
   @observable
-  bool visible=false;
+  bool visible = false;
 
   @observable
   int lenght = 0;
@@ -29,27 +28,21 @@ abstract class _Tree with Store {
   String controllerText = "";
 
   @action
-    void showImg(){
-    if(controllerText.toUpperCase().contains("TREE"))
-      {
-        visible=true;
-      }
-    else
-      {
-      visible=false;
+  void showImg() {
+    if (controllerText.toUpperCase().contains("TREE")) {
+      visible = true;
+    } else {
+      visible = false;
     }
-
-
   }
 
   @action
   void changeColor() {
-
     if (lenght % 2 == 0) {
-      text="paran broj";
+      text = "paran broj";
       color = Colors.blue;
     } else {
-      text="neparan broj";
+      text = "neparan broj";
       color = Colors.red;
     }
   }
